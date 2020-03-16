@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Register</title>
+   <link rel="stylesheet" href="/login/css/style.css">
+   <link rel="stylesheet" href="/fonts/css/all.css">
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
+   <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+   <!-- partial:index.partial.html -->
+   <div class="overlay">
+      <!-- LOGN IN FORM by Omar Dsoky -->
+      <form action="register.php" method="POST">
+         <!--   con = Container  for items in the form-->
+         <div class="con">
+            <!--     Start  header Content  -->
+            <header class="head-form">
+               <h2>Register</h2>
+               <!--     A welcome message or an explanation of the login form -->
+               <p>Input the data especificated to register</p>
+            </header>
+            <!--     End  header Content  -->
+            <br>
+            <div class="field-set">
+
+               <!--   user DNI -->
+               <span class="input-item">
+                  <i class="fas fa-dna"></i>
+               </span>
+               <!--   user DNI Input-->
+               <input class="form-input" id="txt-input" name="dni" type="text" placeholder="@DNI" required maxlength="">
+               
+               <br>
+               
+               <!--   Nombre -->
+               <span class="input-item">
+                  <i class="fa fa-user-circle"></i>
+               </span>
+               <!--   user name Input-->
+               <input class="form-input" id="txt-input" name="nombre" type="text" placeholder="Nombre" required>
+               
+               <br>
+               
+               <!--   Apellido -->
+               <span class="input-item">
+                  <i class="fa fa-user-circle"></i>
+               </span>
+               <!--   user apellido Input-->
+               <input class="form-input" id="txt-input" name="apellido" type="text" placeholder="Apellido" required>
+               
+               <br>
+               
+               <!--   Movil -->
+               <span class="input-item">
+                  <i class="fas fa-phone"></i>
+               </span>
+               <!--   user movil Input-->
+               <input class="form-input" id="txt-input" name="telefono" type="text" placeholder="Telefono" required>
+               
+               <br>
+               
+               <!--   Email -->
+               <span class="input-item">
+               <i class="fas fa-at"></i>
+            </span>
+            <!--   user email Input-->
+            <input class="form-input" id="txt-input" name="mail" type="text" placeholder="Correo elctrónico" required>
+            
+            <br>
+            
+            <!--   Password -->
+            
+               <span class="input-item">
+                  <i class="fa fa-key"></i>
+               </span>
+               <!--   Password Input-->
+               <input class="form-input" type="password" placeholder="Password" id="password" name="pass" required>
+               
+               <!--      Show/hide password  -->
+               <span>
+                  <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+               </span>
+               
+               
+               <br>
+               <!--        buttons -->
+               <!--      button Register -->
+               <button class="btn submits sign-up"> Register 
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
+               </button>
+               
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+            <!--   other buttons -->
+            <div class="other">
+               <!--     Login button -->
+               <button class="log-in" onclick="document.location.href='/login'">Log In 
+                  <!--         Login font icon -->
+                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+               </button>
+               <!--      End Other the Division -->
+            </div>
+         
+            <!--   End Conrainer  -->
+         </div>
+         
+         <!-- End Form -->
+      </form>
+   </div>
+   <!-- partial -->
+   
+</body>
+<script src="/login/js/script.js"></script>
+
+</html>

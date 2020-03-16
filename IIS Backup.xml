@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appcmd>
+    <SITE SITE.NAME="bancolibros.com" SITE.ID="1" bindings="http/10.0.134.227:80:" state="Started">
+        <site name="bancolibros.com" id="1" serverAutoStart="true">
+            <bindings>
+                <binding protocol="http" bindingInformation="10.0.134.227:80:" />
+            </bindings>
+            <limits />
+            <logFile>
+                <customFields>
+                </customFields>
+            </logFile>
+            <traceFailedRequestsLogging />
+            <applicationDefaults />
+            <virtualDirectoryDefaults />
+            <ftpServer>
+                <connections />
+                <security>
+                    <dataChannelSecurity />
+                    <commandFiltering>
+                    </commandFiltering>
+                    <ssl />
+                    <sslClientCertificates />
+                    <authentication>
+                        <anonymousAuthentication />
+                        <basicAuthentication />
+                        <clientCertAuthentication />
+                        <customAuthentication>
+                            <providers>
+                            </providers>
+                        </customAuthentication>
+                    </authentication>
+                    <customAuthorization>
+                        <provider />
+                    </customAuthorization>
+                </security>
+                <customFeatures>
+                    <providers>
+                    </providers>
+                </customFeatures>
+                <messages />
+                <fileHandling />
+                <firewallSupport />
+                <userIsolation>
+                    <activeDirectory />
+                </userIsolation>
+                <directoryBrowse />
+                <logFile />
+            </ftpServer>
+            <application path="/" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancolibros.com" />
+            </application>
+            <application path="/bookslist" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\formulario" />
+            </application>
+            <application path="/bookslist/librosedit" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\formulario\librosedit" />
+            </application>
+            <application path="/admin" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\formulario\admin" />
+            </application>
+            <application path="/login" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\login" />
+            </application>
+            <application path="/register" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\login\register" />
+            </application>
+            <application path="/admin/Editoriales" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\formulario\admin\Editoriales" />
+            </application>
+            <application path="/admin/Libros" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\formulario\admin\Libros" />
+            </application>
+            <application path="/admin/Modulos" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\formulario\admin\Modulos" />
+            </application>
+            <application path="/logout" applicationPool="bancoLibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancoLibros.com\users_zone\logout" />
+            </application>
+            <application path="/libro" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\BancoLibros.com\libro" />
+            </application>
+            <application path="/addbooks" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\BancoLibros.com\users_zone\formulario\libros" />
+            </application>
+            <application path="/mensajes" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\BancoLibros.com\users_zone\formulario\mensajes" />
+            </application>
+            <application path="/bancolibros" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancolibros.com\bancolibros" />
+            </application>
+        </site>
+    </SITE>
+</appcmd>
