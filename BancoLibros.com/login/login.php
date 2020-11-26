@@ -51,9 +51,11 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $contador=0;
         
+            echo"llego";
             $base=new PDO("mysql:host=localhost; dbname=bancolibros" , "kerjox", "IVSZ2e12");
             
             $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             
             
             $sql="SELECT * FROM usuarios WHERE DNI= :login";

@@ -15,6 +15,8 @@
     <HTML>
 
     <HEAD>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <TITLE> Lista de libros </TITLE>
         <link rel="stylesheet" href="/admin/tabla.css">
         <link rel="stylesheet" href="/fonts/css/all.css">

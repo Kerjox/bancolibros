@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.4.11-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.4.6-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             10.3.0.5771
+-- HeidiSQL Versión:             11.0.0.5919
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `DNI` int(11) NOT NULL,
   KEY `DNI` (`DNI`),
   CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`DNI`) REFERENCES `usuarios` (`DNI`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla bancolibros.admin: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
@@ -32,9 +32,9 @@ REPLACE INTO `admin` (`DNI`) VALUES
 -- Volcando estructura para tabla bancolibros.ciclos
 CREATE TABLE IF NOT EXISTS `ciclos` (
   `IDciclo` int(11) NOT NULL AUTO_INCREMENT,
-  `Ciclo` varchar(50) NOT NULL,
+  `Ciclo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IDciclo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla bancolibros.ciclos: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `ciclos` DISABLE KEYS */;
@@ -45,9 +45,9 @@ REPLACE INTO `ciclos` (`IDciclo`, `Ciclo`) VALUES
 -- Volcando estructura para tabla bancolibros.editoriales
 CREATE TABLE IF NOT EXISTS `editoriales` (
   `IDeditorial` int(11) NOT NULL AUTO_INCREMENT,
-  `Editorial` varchar(50) NOT NULL,
+  `Editorial` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`IDeditorial`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla bancolibros.editoriales: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `editoriales` DISABLE KEYS */;
@@ -63,16 +63,16 @@ REPLACE INTO `editoriales` (`IDeditorial`, `Editorial`) VALUES
 -- Volcando estructura para tabla bancolibros.libros
 CREATE TABLE IF NOT EXISTS `libros` (
   `IDlibro` int(11) NOT NULL AUTO_INCREMENT,
-  `ISBN` varchar(17) NOT NULL,
-  `Titulo` varchar(50) NOT NULL,
+  `ISBN` varchar(17) COLLATE utf8_unicode_ci NOT NULL,
+  `Titulo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `IDeditorial` int(11) NOT NULL,
   `IDmodulo` int(11) NOT NULL,
   `IDusuario` int(11) NOT NULL,
   `Precio` double NOT NULL DEFAULT 0,
   `Vendido` tinyint(1) NOT NULL,
-  `Foto` varchar(100) DEFAULT NULL,
+  `Foto` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Fecha` datetime NOT NULL,
-  `Comentarios` varchar(50) DEFAULT NULL,
+  `Comentarios` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`IDlibro`),
   KEY `IDmodulo` (`IDmodulo`),
   KEY `IDeditorial` (`IDeditorial`),
@@ -80,14 +80,15 @@ CREATE TABLE IF NOT EXISTS `libros` (
   CONSTRAINT `FK_libros_usuarios` FOREIGN KEY (`IDusuario`) REFERENCES `usuarios` (`DNI`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `libros_ibfk_1` FOREIGN KEY (`IDmodulo`) REFERENCES `modulos` (`IDmodulo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `libros_ibfk_2` FOREIGN KEY (`IDeditorial`) REFERENCES `editoriales` (`IDeditorial`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla bancolibros.libros: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
 REPLACE INTO `libros` (`IDlibro`, `ISBN`, `Titulo`, `IDeditorial`, `IDmodulo`, `IDusuario`, `Precio`, `Vendido`, `Foto`, `Fecha`, `Comentarios`) VALUES
-	(84, '9788448183943', 'Sistemas Operativos en Red', 6, 1, 22222222, 29.99, 1, '5e5397e676c82sor.jpg', '2020-02-24 10:31:18', ''),
-	(85, '9788468345666', 'Empresa e Iniciativa Emprendedora', 2, 1, 22222222, 29.99, 1, '5e53984e9cfc5file.jpg', '2020-02-24 10:33:02', ''),
-	(86, '9781471562518', 'Computing', 7, 1, 22222222, 15, 1, '5e539896a2e61computing.jpg', '2020-02-24 10:34:14', '');
+	(84, '9788448183943', 'Sistemas Operativos en Red', 6, 1, 22222222, 29.99, 1, '5e776599b634dsor.jpg', '2020-03-22 14:18:17', ''),
+	(85, '9788468345666', 'Empresa e Iniciativa Emprendedora', 2, 1, 22222222, 29.99, 1, '5e77659289248fol.jpg', '2020-03-22 14:18:10', ''),
+	(86, '9781471562518', 'Computing', 7, 1, 22222222, 15, 1, '5e539896a2e61computing.jpg', '2020-02-24 10:34:14', ''),
+	(87, '65163156156126321', 'Holauuuuu', 6, 1, 11111111, 88.66, 0, 'null.jpg', '2020-11-26 13:23:58', '');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 
 -- Volcando estructura para tabla bancolibros.mensajes
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `Para` int(11) NOT NULL,
   `IDlibro` int(11) NOT NULL,
   `Fecha` date DEFAULT NULL,
-  `Mensaje` varchar(100) NOT NULL DEFAULT '',
+  `Mensaje` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`IDmensaje`),
   KEY `FK_mensajes_libros` (`IDlibro`),
   KEY `FK_mensajes_usuarios` (`Desde`),
@@ -105,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   CONSTRAINT `FK_mensajes_libros` FOREIGN KEY (`IDlibro`) REFERENCES `libros` (`IDlibro`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_mensajes_usuarios` FOREIGN KEY (`Desde`) REFERENCES `usuarios` (`DNI`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_mensajes_usuarios_2` FOREIGN KEY (`Para`) REFERENCES `usuarios` (`DNI`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla bancolibros.mensajes: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `mensajes` DISABLE KEYS */;
@@ -114,14 +115,14 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
 -- Volcando estructura para tabla bancolibros.modulos
 CREATE TABLE IF NOT EXISTS `modulos` (
   `IDmodulo` int(11) NOT NULL AUTO_INCREMENT,
-  `Modulo` varchar(50) NOT NULL,
+  `Modulo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `IDciclo` int(11) NOT NULL,
   PRIMARY KEY (`IDmodulo`),
   KEY `IDciclo` (`IDciclo`),
   CONSTRAINT `FK_modulos_ciclos` FOREIGN KEY (`IDciclo`) REFERENCES `ciclos` (`IDciclo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla bancolibros.modulos: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla bancolibros.modulos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `modulos` DISABLE KEYS */;
 REPLACE INTO `modulos` (`IDmodulo`, `Modulo`, `IDciclo`) VALUES
 	(1, 'Sistemas Operativos en Red', 1),
@@ -132,18 +133,20 @@ REPLACE INTO `modulos` (`IDmodulo`, `Modulo`, `IDciclo`) VALUES
 -- Volcando estructura para tabla bancolibros.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `DNI` int(8) NOT NULL,
-  `Nombre` varchar(25) NOT NULL,
-  `Apellido` varchar(25) NOT NULL,
+  `Nombre` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `Apellido` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `Movil` int(9) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `pass` varchar(100) NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `pass` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`DNI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla bancolibros.usuarios: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla bancolibros.usuarios: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 REPLACE INTO `usuarios` (`DNI`, `Nombre`, `Apellido`, `Movil`, `email`, `pass`) VALUES
-	(22222222, 'Prueba', 'Holamudo', 111111111, 'prueba@gmail.com', '$2y$10$6nTm4OaqqHNIPJr1459Ln.f8F05OhmZvDJCHareFeLy/LaGJwQMf.');
+	(11111111, 'Hola', 'Hola', 111111111, 'hola@gmail.com', '$2y$10$Zxey/8S8IhHN4Qj4edalOOSkYpXkj0Ca7/JeqLj7Z3PzBd3AmjNrK'),
+	(22222222, 'Prueba', 'Holamudo', 111111111, 'prueba@gmail.com', '$2y$10$6nTm4OaqqHNIPJr1459Ln.f8F05OhmZvDJCHareFeLy/LaGJwQMf.'),
+	(26276114, 'Daniel', 'Ubalde', 456789126, 'asdasdasds@gmail.com', '$2y$10$WON2pw1l2NQ4pi3D0/R2K.lh60rAcm1MKIKbx1Ea7VRmoqGbvepdi');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

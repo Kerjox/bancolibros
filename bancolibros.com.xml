@@ -99,9 +99,13 @@
                 <virtualDirectoryDefaults />
                 <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\BancoLibros.com\users_zone\formulario\mensajes" />
             </application>
-            <application path="/bancolibros" applicationPool="bancolibros.com">
+            <application path="/Rpc" applicationPool="bancolibros.com">
                 <virtualDirectoryDefaults />
-                <virtualDirectory path="/" physicalPath="C:\inetpub\wwwroot\bancolibros.com\bancolibros" />
+                <virtualDirectory path="/" physicalPath="C:\Windows\System32\RpcProxy" />
+            </application>
+            <application path="/RpcWithCert" applicationPool="bancolibros.com">
+                <virtualDirectoryDefaults />
+                <virtualDirectory path="/" physicalPath="C:\Windows\System32\RpcProxy" />
             </application>
         </site>
     </SITE>

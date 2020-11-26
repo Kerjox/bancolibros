@@ -4,7 +4,7 @@ require '../../conexion.php';
 session_start();
 //Ver si hay algo almacenado en la variable session
 if (!isset($_SESSION["usuario"])) {
-     header("location:../../");
+     header("location:/");
 }
 //Datos que entran
 $id = $_GET['id'];
@@ -47,7 +47,7 @@ if ($revisar !== false) {
 $sql = "UPDATE libros SET ISBN=$isbn, Titulo=$titulo, IDmodulo=$modulo, IDeditorial=$editorial, IDusuario=$usuario, Precio=$precio, Vendido=$vendido, Foto='$nombre_imagen',Fecha=now(), Comentarios=$comentarios WHERE IDlibro=$id";
 
 if ($conn->query($sql)) {
-    header("location:bookslist.php") ;
+    header("location:/bookslist") ;
 
 } else {
     echo "Error: " . $sql . "" . $conn->error;
